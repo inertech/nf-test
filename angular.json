@@ -949,32 +949,6 @@
 			"sourceRoot": "projects/angular-material-shell/src",
 			"prefix": "app",
 			"architect": {
-				"build": {
-					"builder": "@angular-architects/native-federation:build",
-					"options": {},
-					"configurations": {
-						"production": {
-							"target": "angular-material-shell:esbuild:production"
-						},
-						"development": {
-							"target": "angular-material-shell:esbuild:development",
-							"dev": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "@angular-architects/native-federation:build",
-					"options": {
-						"target": "angular-material-shell:serve-original:development",
-						 "buildNotifications": {
-							"enable": true
-						},
-						"rebuildDelay": 0,
-						"dev": true,
-						"port": 0
-					}
-				},
 				"extract-i18n": {
 					"builder": "@angular/build:extract-i18n"
 				},
@@ -998,15 +972,14 @@
 						"scripts": []
 					}
 				},
-				"esbuild": {
+				"build": {
 					"builder": "@angular/build:application",
 					"options": {
-						"outputPath": "dist/angular-material-shell",
+						"outputPath": "dist/angular-material-shell-no-nf",
 						"index": "projects/angular-material-shell/src/index.html",
 						"browser": "projects/angular-material-shell/src/main.ts",
 						"polyfills": [
-							"zone.js",
-							"es-module-shims"
+							"zone.js"
 						],
 						"tsConfig": "projects/angular-material-shell/tsconfig.app.json",
 						"assets": [
@@ -1045,14 +1018,14 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve-original": {
+				"serve": {
 					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "angular-material-shell:esbuild:production"
+							"buildTarget": "angular-material-shell:build:production"
 						},
 						"development": {
-							"buildTarget": "angular-material-shell:esbuild:development"
+							"buildTarget": "angular-material-shell:build:development"
 						}
 					},
 					"defaultConfiguration": "development",

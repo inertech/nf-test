@@ -1,15 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { loadRemoteModule } from '@softarc/native-federation-runtime';
+import { AppComponent } from '../../../angular-material-app/src/app/app.component';
 
 export const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: HomeComponent,
+    component: AppComponent,
   },
-  {
-    path: 'angularMaterialApp',
-    loadComponent: () => loadRemoteModule('angularMaterialApp', './Component')
-  }
 ];
